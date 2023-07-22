@@ -1,0 +1,63 @@
+.add {
+    padding-right: 5px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.espace {
+    margin: 0px 30px 0px;
+}
+
+.ensembleRecipe {
+    text-align: center;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+.sousEnsemble {
+   margin: 50px 20px 50px;
+}
+
+.cardRecipe {
+    width: 18rem;
+}
+
+.actionAndIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    margin: 0px 7px 0px;
+}
+
+.display2 {
+    display: flex;
+    align-items: center;
+    margin: 0px 7px 0px;
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.value {
+    margin-left: 5px;
+}
+
+.loadingContainer {
+    margin: 60px;
+}

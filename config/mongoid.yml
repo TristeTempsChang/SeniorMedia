@@ -1,0 +1,12 @@
+development:
+  # Configure available database clients. (required)
+  clients:
+    # Defines the default client. (required)
+    default:
+      # Mongoid can connect to a URI accepted by the driver:
+      uri: mongodb+srv://tristan:tristan@cluster0.gy9hpez.mongodb.net/SeniorMedia?retryWrites=true&w=majority
+
+test:
+  clients:
+    default:
+      uri: mongodb+srv://tristan:tristan@cluster0.gy9hpez.mongodb.net/SeniorMedia?retryWrites=true&w=majority
