@@ -5,6 +5,8 @@ import App from './components/App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Create from './components/create';
+import Edit from './components/edition';
+import SingleRecipe from './components/singleRecipe';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,6 +15,8 @@ function AppRoutes(){
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/create" element={<Create />} />
+        <Route path=':recipeId' element={<SingleRecipe />} />
+        <Route path=":recipeId/edit" element={<Edit/>} />
       </Routes>
     )
 }

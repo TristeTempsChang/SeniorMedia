@@ -1,0 +1,16 @@
+.blocRecipe {
+    text-align: center;
+    margin: 60px;
+    padding: 30px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+    border-radius: 5px;
+}
+
+.imageRecipe {
+    height: auto;
+    width: 20rem;
+}
+
+.titreRecipe {
+    font-size: 4rem;
+}

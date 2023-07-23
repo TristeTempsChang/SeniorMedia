@@ -25,16 +25,12 @@ const ColorButton = styled(Button)(({ theme }) => ({
     },
   }));
 
-function Accueil() {
+function Accueil({ searchTerm }) {
 
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const recipesPerPage = 4;
-
-  const indexOfLastRecipe = page * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const recipesToShow = data.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   useEffect(() => {
     axios.get('http://localhost:3001/get_recipe')
@@ -48,6 +44,17 @@ function Accueil() {
         setLoading(false);
       });
   }, []);
+  
+  const filteredRecipes = data.filter(recipe => {
+    const searchTerms = searchTerm.trim().toLowerCase().split(' ');
+    const recipeTitle = recipe.nom.toLowerCase();
+    return searchTerms.every(term => recipeTitle.includes(term));
+  });
+
+  const indexOfLastRecipe = page * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const recipesToShow = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
 
   return (
     <div>
@@ -75,7 +82,7 @@ function Accueil() {
           </div>
         ) : (
           recipesToShow.map(recipe => (
-            <div className='sousEnsemble' key={recipe.id}>
+            <div className='sousEnsemble' key={recipe._id.$oid}>
               <Card className='cardRecipe' sx={{ maxWidth: 345 }}>
                 <CardMedia
                   sx={{ height: 200 }}
@@ -84,9 +91,9 @@ function Accueil() {
                 />
                 <CardContent>
                   <Chip label={recipe.type} />
-                  <Typography className='title' gutterBottom variant="h5" component="div">
+                  <Link className='title' to={`${recipe._id.$oid}`}><Typography gutterBottom variant="h5" component="div">
                     {recipe.nom}
-                  </Typography>
+                  </Typography></Link>
                 </CardContent>
                 <CardActions className='actionAndIcons'>
                   <div className='display'>
@@ -98,7 +105,7 @@ function Accueil() {
                     <p className='value'>{recipe.view} vues</p>
                   </div>
                 </CardActions>
-                <Button className="btn" size="small">Editer</Button>
+                <Link to={`${recipe._id.$oid}/edit`}><Button className="btn" size="small">Editer</Button></Link>
               </Card>
             </div>
           ))
